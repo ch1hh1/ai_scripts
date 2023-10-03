@@ -20,9 +20,6 @@ try {
   if (selectedObj.length === 0) {
     // 未選択エラー
     throw new Error("no selected");
-  } else if (selectedObj.length >= 2) {
-    // 選択多すぎるエラー
-    throw new Error("too many");
   } else if (selectedObj.length === 1) {
     if (selectedObj[0].typename === "TextFrame") {
       // 選択したテキストボックスを変数に入れる（可読性が少し上がるだけで意味はない）
@@ -31,6 +28,9 @@ try {
       // 選択がテキストフレーム以外のエラー
       throw new Error("no text");
     }
+  } else {
+    // 選択多すぎるエラー
+    throw new Error("too many");
   };
 
   for (var i = 0; i < selectedTextFlame.paragraphs.length; i++) {
